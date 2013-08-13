@@ -6,14 +6,35 @@ requirejs.config({
   }
 });
 
-require(['jquery', 'templates', 'text!fake.json'], function ($, templates, tileData) {
-  var tileData = JSON.parse(tileData)
+require([
+  'jquery',
+  'templates',
+  'text!fake.json'
+], function (
+  $,
+  templates,
+  tileData
+) {
+  var tileData = JSON.parse(tileData);
+  var tileString = '';
 
-  $('body').append(templates.header({
+  var $body = $('body');
+  var $tileContainer = $(templates.tileContainer());
+
+  function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  $body.append(templates.header({
     name: 'Herbert West'
   }));
 
-  $('body').append(templates.tiles({
-    tiles: tileData
-  }));
+  tileData.forEach(function (tile, i) {
+    var tileTemplate = templates['tiles' + capitalize(tile.type)] || templates['tilesDefault'];
+    tileString += tileTemplate(tile);
+  });
+
+  $tileContainer.append(tileString);
+  $body.append($tileContainer);
+
 });
