@@ -2,19 +2,19 @@ define([
   'store',
   'lodash',
   'uuid',
-  'text!json/fake.json'
-], function (store, _, uuid, fakeData) {
+  'js/make-data'
+], function (store, _, uuid, makeData) {
 
   // Eventually this will be pulled from a service
   //  or inlined on index in a JSON script block
-  var blob = JSON.parse(fakeData);
-
-  for (var key in blob) {
-    // Only populate missing keys (eventually stale keys should be replaced)
-    if (!store.get(key)) {
-      store.set(key, blob[key]);
+  makeData('k88hudson', function(err, data) {
+    for (var key in data) {
+      // Only populate missing keys (eventually stale keys should be replaced)
+      if (!store.get(key)) {
+        store.set(key, data[key]);
+      }
     }
-  }
+  });
 
   var db = {
     /**

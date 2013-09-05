@@ -6,18 +6,18 @@ requirejs.config({
     imagesloaded: 'imagesloaded/imagesloaded',
     jade: 'jade/runtime',
     jquery: 'jquery/jquery',
-    jqueryui: 'jquery-ui/ui/jquery-ui',
     js: '../_fe/js',
     json: '../_fe/json',
     komponent: 'komponent/komponent',
     lodash: 'lodash/lodash',
     main: '../_fe/js/main',
+    makeapi: 'makeapi-client/src/make-api',
     neuquant: 'Animated_GIF/src/NeuQuant',
     omggif: 'Animated_GIF/src/omggif',
     store: 'store.js/store',
-    uuid: 'node-uuid/uuid',
     templates: '../_fe/compiled/jade-templates',
-    text: 'text/text'
+    text: 'text/text',
+    uuid: 'node-uuid/uuid'
   }
 });
 
